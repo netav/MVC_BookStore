@@ -1,0 +1,33 @@
+﻿@using BookStore_MVC.Models;
+
+@model List<BookViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Book list</h1>
+<table>
+    <thead>
+     <th>BookNumber</th>
+     <th>Name</th>
+    <th>Author</th>
+    <th>Rating</th>
+    <th>Price</th>
+    </thead>
+
+    @foreach (BookViewModel book in Model)
+    {
+        <tr>
+            <td>@book.BookNumber</td>
+            <td>@book.Name</td>
+            <td>@book.Author</td>
+            <td>@book.Rating</td>
+            <td>@book.Price</td>
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("Add new" , "NewBook" , "Book")
+
+
+
