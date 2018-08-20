@@ -10,7 +10,9 @@ namespace BookStore_MVC.Service
     interface IBookService
     {
         List<BookViewModel> GetAll();
-
+        BookViewModel GetById(string bookNumber);
         void AddNewBook(BookViewModel model);
+        void RemoveBook(string BookNumber);
+        void UpdateBook(BookViewModel model);
     }
 }

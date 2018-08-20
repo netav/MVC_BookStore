@@ -26,6 +26,11 @@ namespace BookStore_MVC.Repository
             return _context.Books.ToList();
         }
 
+        public Book GetById(int id)
+        {
+            return _context.Books.FirstOrDefault(_ => _.Id == id);
+        }
+
         public List<Book> GetByName(string name)
         {
             throw new NotImplementedException();
@@ -38,12 +43,21 @@ namespace BookStore_MVC.Repository
 
         public void RemoveBook(int id)
         {
-            throw new NotImplementedException();
+            Book book = _context.Books.FirstOrDefault(_ => _.Id == id);
+            _context.Books.Remove(book);
+            _context.SaveChanges();
         }
 
-        public void UpdateBook(Book book)
+        public void UpdateBook(Book newbook)
         {
-            throw new NotImplementedException();
+            Book oldBook = GetById(newbook.Id);
+
+            oldBook.Name = newbook.Name;
+            oldBook.Price = newbook.Price;
+            oldBook.Rating = newbook.Rating;
+            oldBook.Author = newbook.Author;
+
+            _context.SaveChanges();
         }
     }
 }

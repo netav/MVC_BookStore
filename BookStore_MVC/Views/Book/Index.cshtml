@@ -1,6 +1,7 @@
 ﻿@using BookStore_MVC.Models;
 
 @model List<BookViewModel>
+
 @{
     ViewBag.Title = "Index";
 }
@@ -8,22 +9,26 @@
 <h1>Book list</h1>
 <table>
     <thead>
-     <th>BookNumber</th>
-     <th>Name</th>
+    <th>BookNumber</th>
+    <th>Name</th>
     <th>Author</th>
     <th>Rating</th>
     <th>Price</th>
+    <th>Actions</th>
+    
     </thead>
 
     @foreach (BookViewModel book in Model)
     {
-        <tr>
-            <td>@book.BookNumber</td>
-            <td>@book.Name</td>
-            <td>@book.Author</td>
-            <td>@book.Rating</td>
-            <td>@book.Price</td>
-        </tr>
+    <tr>
+        <td>@book.BookNumber</td>
+        <td>@book.Name</td>
+        <td>@book.Author</td>
+        <td>@book.Rating</td>
+        <td>@book.Price</td>
+        <td>@Html.ActionLink("Remove", "RemoveBook", "Book", new { number = book.BookNumber }, null)</td>
+        <td>@Html.ActionLink("Change", "UpdateBook", "Book", new { number = book.BookNumber }, null)</td>
+    </tr>
     }
 </table>
 

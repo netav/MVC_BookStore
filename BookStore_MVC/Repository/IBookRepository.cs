@@ -12,6 +12,7 @@ namespace BookStore_MVC.Repository
         List<Book> GetAll();
         List<Book> GetByRating(double rating);
         List<Book> GetByName(string name);
+        Book GetById(int id);
 
         void AddBook(Book book);
         void RemoveBook(int id);

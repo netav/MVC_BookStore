@@ -34,6 +34,26 @@ namespace BookStore_MVC.Controllers
             _bookService.AddNewBook(model);
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public ActionResult RemoveBook(string number)
+        {
+            _bookService.RemoveBook(number);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult UpdateBook(string number)
+        {
+            BookViewModel bookViewModel = _bookService.GetById(number);
+            return View(bookViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateBook(BookViewModel bookViewModel)
+        {
+            _bookService.UpdateBook(bookViewModel);
+            return RedirectToAction("Index");
+        }
 
     }
 }
