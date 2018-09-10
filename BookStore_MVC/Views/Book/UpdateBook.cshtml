@@ -6,7 +6,7 @@
 }
 <h2>UpdateBook</h2>
 <h3>Book number : @Model.BookNumber</h3>
-
+    
 @using (Html.BeginForm("UpdateBook", "Book"))
 {
     @Html.HiddenFor(_ => _.BookNumber);
